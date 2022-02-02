@@ -1,17 +1,15 @@
 package main;
 
-import main.impl.PilaEstaticaTopeFinal;
+import main.impl.PilaEstaticaTopeInicial;
 import main.interfaces.PilaTDA;
 
 public class Main {
 
 	public static void main(String[] args) {
 
-		PilaTDA pila = new PilaEstaticaTopeFinal();
+		PilaTDA pila = new PilaEstaticaTopeInicial();
 		pila.apilar(1);
 		pila.apilar(23);
-		PilaTDA copia = copiarPila(pila);
-		mostrarPila(copia);
 		mostrarPila(pila);
 	}
 	
@@ -26,8 +24,8 @@ public class Main {
 	}
 	
 	private static PilaTDA copiarPila(PilaTDA pila) {
-		PilaTDA copia = new PilaEstaticaTopeFinal();
-		PilaTDA aux = new PilaEstaticaTopeFinal();
+		PilaTDA copia = new PilaEstaticaTopeInicial();
+		PilaTDA aux = new PilaEstaticaTopeInicial();
 		while(!pila.pilaVacia()) {
 			aux.apilar(pila.tope());
 			pila.desapilar();
