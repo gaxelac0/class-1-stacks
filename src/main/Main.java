@@ -2,6 +2,7 @@ package main;
 
 import main.impl.ColaEstatica;
 import main.interfaces.ColaTDA;
+import main.utils.ColaUtils;
 
 public class Main {
 
@@ -9,28 +10,11 @@ public class Main {
 		
 		ColaTDA cola = new ColaEstatica();
 		cola.acolar(1);
-		cola.acolar(1);
-		cola.acolar(1);
-		cola.acolar(1);
-	}
-	
-	public static void mostrarCola(ColaTDA cola) {
-		//while() {
-			//
-		//}
-	}
-	
-	public static void copiar(ColaTDA cola) {
-		ColaTDA copia = new ColaEstatica();
-		ColaTDA aux = new ColaEstatica();
+		cola.acolar(2);
+		cola.acolar(3);
+		cola.acolar(4);
+		cola.desacolar();
 		
-		while(!cola.colaVacia()) {
-			aux.acolar(cola.primero());
-			cola.desacolar();
-		}
-		
-		while (!aux.colaVacia()) {
-			
-		}
+		ColaUtils.mostrarCola(cola);
 	}
 }
