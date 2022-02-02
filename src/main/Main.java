@@ -1,42 +1,36 @@
 package main;
 
-import main.impl.PilaEstaticaTopeInicial;
-import main.interfaces.PilaTDA;
+import main.impl.ColaEstatica;
+import main.interfaces.ColaTDA;
 
 public class Main {
 
 	public static void main(String[] args) {
-
-		PilaTDA pila = new PilaEstaticaTopeInicial();
-		pila.apilar(1);
-		pila.apilar(23);
-		mostrarPila(pila);
+		
+		ColaTDA cola = new ColaEstatica();
+		cola.acolar(1);
+		cola.acolar(1);
+		cola.acolar(1);
+		cola.acolar(1);
 	}
 	
-	private static void mostrarPila(PilaTDA pila) {
-		
-		PilaTDA aux = copiarPila(pila);
-		while(!aux.pilaVacia()) {
-			System.out.println(aux.tope());
-			aux.desapilar();
-		}
-		
+	public static void mostrarCola(ColaTDA cola) {
+		//while() {
+			//
+		//}
 	}
 	
-	private static PilaTDA copiarPila(PilaTDA pila) {
-		PilaTDA copia = new PilaEstaticaTopeInicial();
-		PilaTDA aux = new PilaEstaticaTopeInicial();
-		while(!pila.pilaVacia()) {
-			aux.apilar(pila.tope());
-			pila.desapilar();
+	public static void copiar(ColaTDA cola) {
+		ColaTDA copia = new ColaEstatica();
+		ColaTDA aux = new ColaEstatica();
+		
+		while(!cola.colaVacia()) {
+			aux.acolar(cola.primero());
+			cola.desacolar();
 		}
 		
-		while(!aux.pilaVacia()) {
-			pila.apilar(aux.tope());
-			copia.apilar(aux.tope());
-			aux.desapilar();
+		while (!aux.colaVacia()) {
+			
 		}
-		return copia;
 	}
-
 }
