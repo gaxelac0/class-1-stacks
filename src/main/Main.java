@@ -1,21 +1,30 @@
 package main;
 
-import main.impl.ColaPrioridadEstatica;
-import main.interfaces.ColaPrioridadTDA;
-import main.utils.ColaPrioridadUtils;
+import main.impl.ConjuntoEstatico;
+import main.interfaces.ConjuntoTDA;
+import main.utils.ConjuntoUtils;
 
 public class Main {
 
 	public static void main(String[] args) {
 		
-		ColaPrioridadTDA cola = new ColaPrioridadEstatica();
-		cola.acolarPrioridad(3, 4);
-		cola.acolarPrioridad(1, 2);
-		cola.acolarPrioridad(6, 6);
-		cola.acolarPrioridad(4, 5);
-		cola.acolarPrioridad(2, 3);
-
+		ConjuntoTDA conjunto = new ConjuntoEstatico();
+		conjunto.agregar(1);
+		conjunto.agregar(1);
+		conjunto.agregar(2);
+		conjunto.agregar(3);
+		conjunto.agregar(7);
+		conjunto.agregar(5);
 		
-		ColaPrioridadUtils.mostrarCola(cola);
+		ConjuntoUtils.mostrarConjunto(conjunto);
+		System.out.println();
+		System.out.print(conjunto.elegir());
+		System.out.print(conjunto.elegir());
+		System.out.print(conjunto.elegir());
+		System.out.println();
+		conjunto.quitar(7);
+		conjunto.quitar(3);
+		System.out.println();
+		ConjuntoUtils.mostrarConjunto(conjunto);
 	}
 }
