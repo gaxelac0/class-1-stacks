@@ -1,20 +1,21 @@
 package main;
 
-import main.impl.ColaEstatica;
-import main.interfaces.ColaTDA;
-import main.utils.ColaUtils;
+import main.impl.ColaPrioridadEstatica;
+import main.interfaces.ColaPrioridadTDA;
+import main.utils.ColaPrioridadUtils;
 
 public class Main {
 
 	public static void main(String[] args) {
 		
-		ColaTDA cola = new ColaEstatica();
-		cola.acolar(1);
-		cola.acolar(2);
-		cola.acolar(3);
-		cola.acolar(4);
-		cola.desacolar();
+		ColaPrioridadTDA cola = new ColaPrioridadEstatica();
+		cola.acolarPrioridad(3, 4);
+		cola.acolarPrioridad(1, 2);
+		cola.acolarPrioridad(6, 6);
+		cola.acolarPrioridad(4, 5);
+		cola.acolarPrioridad(2, 3);
+
 		
-		ColaUtils.mostrarCola(cola);
+		ColaPrioridadUtils.mostrarCola(cola);
 	}
 }
