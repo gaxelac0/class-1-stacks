@@ -30,12 +30,15 @@ public class ConjuntoEstatico implements ConjuntoTDA {
 	public void quitar(int x) {
 		
 		// obtengo el indice
-		int i = 0;
-		while(i < cant && elems[i] != x) 
-			i++;
+		int idx = 0;
+		while(idx < cant && elems[idx] != x) 
+			idx++;
 		
-		if(i < cant) {
-			elems[i] = elems[cant-1];
+		// lo piso con el ultimo y se reduce el indice
+		// al reducir el indice el valor movido queda fuera del rango y no importa porque se pisara
+		// cuando se inserte un nuevo valor.
+		if(idx < cant) {
+			elems[idx] = elems[cant-1];
 			cant--;
 		}
 	}
@@ -45,12 +48,10 @@ public class ConjuntoEstatico implements ConjuntoTDA {
 		return elems[cant-1];
 	}
 
-	/*
-	 * si pertenece devuelve el indice, sino devuelve -1
-	 */
 	@Override
 	public boolean pertenece(int x) {
 
+		// recupero el indice
 		int i = 0;
 		while(i < cant && elems[i] != x) 
 			i++;
