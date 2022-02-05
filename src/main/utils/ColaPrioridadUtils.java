@@ -1,6 +1,6 @@
 package main.utils;
 
-import main.impl.ColaPrioridadEstatica;
+import main.impl.cola.ColaPrioridadEstatica;
 import main.interfaces.ColaPrioridadTDA;
 
 public class ColaPrioridadUtils {

@@ -1,4 +1,6 @@
-package main.impl;
+package main.impl.conjunto;
+
+import java.util.Arrays;
 
 import main.interfaces.ConjuntoTDA;
 
@@ -13,7 +15,7 @@ public class ConjuntoEstatico implements ConjuntoTDA {
 	
 	@Override
 	public void inicializarConjunto() {
-		elems = new int[100];
+		elems = new int[10];
 		cant = 0;
 	}
 
@@ -63,6 +65,11 @@ public class ConjuntoEstatico implements ConjuntoTDA {
 	@Override
 	public boolean conjuntoVacio() {
 		return cant == 0;
+	}
+
+	@Override
+	public String toString() {		
+		return Arrays.toString(elems);
 	}
 
 }

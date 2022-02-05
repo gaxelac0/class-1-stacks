@@ -1,6 +1,6 @@
 package main.interfaces;
 
-public interface DiccionarioTDA {
+public interface DiccionarioSimpleTDA {
 	
 	public void inicializarDiccionario();
 	public void agregar(int key, int valor);

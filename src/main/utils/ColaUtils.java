@@ -1,6 +1,6 @@
 package main.utils;
 
-import main.impl.ColaEstatica;
+import main.impl.cola.ColaEstatica;
 import main.interfaces.ColaTDA;
 
 public class ColaUtils {

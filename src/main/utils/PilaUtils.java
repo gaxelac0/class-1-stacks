@@ -1,6 +1,6 @@
 package main.utils;
 
-import main.impl.PilaEstaticaTopeInicial;
+import main.impl.pila.PilaEstaticaTopeInicial;
 import main.interfaces.PilaTDA;
 
 public class PilaUtils {

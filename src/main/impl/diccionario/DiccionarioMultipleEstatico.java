@@ -1,5 +1,6 @@
-package main.impl;
+package main.impl.diccionario;
 
+import main.impl.conjunto.ConjuntoEstatico;
 import main.interfaces.ConjuntoTDA;
 import main.interfaces.DiccionarioMultipleTDA;
 
@@ -30,39 +31,83 @@ public class DiccionarioMultipleEstatico implements DiccionarioMultipleTDA {
 	}
 	@Override
 	public void agregar(int key, int value) {
-		// clave2Indice
-		// if pos == -1 genero un nuevo elemento
-				// pos = cantClaves
 		
+		int posC = clave2Indice(key);
+		if(posC == -1) {
+			posC = cantClaves;
+			
+			elementos[posC] = new Elemento();
+			elementos[posC].clave = key;
+			cantClaves++;
+		}
 		
-		// valor2Indice
-		// 
-		//cantClaves++
-		
+		Elemento e = elementos[posC];
+		int posV = value2Indice(e, value);
+		if(posV == -1) {
+			e.valores[e.cantValores] = value;
+			e.cantValores++;
+		}
 	}
 	
 	@Override
 	public void eliminarClave(int key) {
+		
+		
 		// elimina la clave completamente
+		int pos = clave2Indice(key);
+		if(pos != -1) {
+			elementos[pos] = elementos[cantClaves-1];
+			cantClaves--;
+		}
 		
 	}
 	
 	@Override
 	public void eliminarValor(int key, int value) {
 		// elimina el valor si existe. Si la clave no tiene mas valores, eliminar clave.
+		int posC = clave2Indice(key);
+		if(posC != -1) {
+			
+			Elemento e = elementos[posC];
+			int posV = value2Indice(e, value);
+			if(posV != -1) {
+				e.valores[posV] = e.valores[e.cantValores-1];
+				e.cantValores--;
+				
+				if(e.cantValores == 0) {
+					eliminarClave(key);
+				}
+			}
+		}
 		
 	}
 	
 	@Override
 	public ConjuntoTDA recuperar(int key) {
-		// TODO Auto-generated method stub
-		return null;
+
+		ConjuntoTDA c = new ConjuntoEstatico();
+		int pos = clave2Indice(key);
+		if(pos != -1) {
+			
+			Elemento e = elementos[pos];
+			for(int i = 0; i < e.cantValores; i++) {
+				c.agregar(e.valores[i]);
+			}
+			
+		}
+		
+		return c;
 	}
 	
 	@Override
 	public ConjuntoTDA claves() {
-		// TODO Auto-generated method stub
-		return null;
+		
+		ConjuntoTDA c = new ConjuntoEstatico();
+		for(int i = 0; i < cantClaves; i++) {
+			c.agregar(elementos[i].clave);
+		}
+		
+		return c;
 	}
 	
 	/**
@@ -74,7 +119,7 @@ public class DiccionarioMultipleEstatico implements DiccionarioMultipleTDA {
 		
 		int i = cantClaves-1;
 		while(i>= 0 && elementos[i].clave != key)
-			i++;
+			i--;
 			
 		return i;
 	}
@@ -88,7 +133,7 @@ public class DiccionarioMultipleEstatico implements DiccionarioMultipleTDA {
 		
 		int i = e.cantValores-1;
 		while(i>= 0 && e.valores[i] != val)
-			i++;
+			i--;
 			
 		return i;
 	}

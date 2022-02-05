@@ -1,9 +1,10 @@
-package main.impl;
+package main.impl.diccionario;
 
+import main.impl.conjunto.ConjuntoEstatico;
 import main.interfaces.ConjuntoTDA;
-import main.interfaces.DiccionarioTDA;
+import main.interfaces.DiccionarioSimpleTDA;
 
-public class DiccionarioSimpleEstatico implements DiccionarioTDA {
+public class DiccionarioSimpleEstatico implements DiccionarioSimpleTDA {
 	
 	class Elemento {
 		int key;
@@ -81,7 +82,7 @@ public class DiccionarioSimpleEstatico implements DiccionarioTDA {
 		
 		int i = cantClaves-1;
 		while(i>= 0 && elems[i].key != key)
-			i++;
+			i--;
 			
 		return i;
 	}

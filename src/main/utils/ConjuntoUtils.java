@@ -1,6 +1,6 @@
 package main.utils;
 
-import main.impl.ConjuntoEstatico;
+import main.impl.conjunto.ConjuntoEstatico;
 import main.interfaces.ConjuntoTDA;
 
 public class ConjuntoUtils {
