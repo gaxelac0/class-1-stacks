@@ -1,18 +1,18 @@
 package main;
 
-import main.impl.pila.PilaDinamica;
-import main.interfaces.PilaTDA;
-import main.utils.PilaUtils;
+import main.impl.cola.ColaDinamica;
+import main.interfaces.ColaTDA;
+import main.utils.ColaUtils;
 
 public class Main {
 
 	public static void main(String[] args) {
 		
-		PilaTDA pila = new PilaDinamica();
-		pila.apilar(1);
-		pila.apilar(2);
-		pila.apilar(3);
-		pila.apilar(4);
-		PilaUtils.mostrarPila(pila);
+		ColaTDA cola = new ColaDinamica();
+		cola.acolar(1);
+		cola.acolar(3);
+		cola.acolar(3);
+		cola.acolar(4);
+		ColaUtils.mostrarCola(cola);
 	}
 }
