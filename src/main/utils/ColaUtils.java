@@ -11,6 +11,7 @@ public class ColaUtils {
 			System.out.print(copia.primero());
 			copia.desacolar();
 		}
+		System.out.println("");
 	}
 	
 	public static ColaTDA copiarCola(ColaTDA cola) {
@@ -29,6 +30,22 @@ public class ColaUtils {
 		}
 		
 		return copia;
+	}
+
+	public static boolean sonIguales(ColaTDA cola, ColaTDA invertida) {
+		
+		ColaTDA copia = copiarCola(cola);
+		ColaTDA copiaInvertida = copiarCola(invertida);
+		
+		boolean iguales = true;
+		while(iguales && !copia.colaVacia() ) {
+			iguales = copia.primero()==copiaInvertida.primero();
+			copia.desacolar();
+			copiaInvertida.desacolar();
+		}
+		
+		
+		return (iguales&&copiaInvertida.colaVacia());
 	}
 
 }

@@ -1,28 +1,29 @@
 package main;
 
-import main.impl.diccionario.DiccionarioMultipleEstatico;
-import main.interfaces.DiccionarioMultipleTDA;
-import main.utils.DiccionarioUtils;
+import main.exercises.EjercicioColas;
+import main.impl.cola.ColaEstatica;
+import main.interfaces.ColaTDA;
 
 public class Main {
 
 	public static void main(String[] args) {
 		
+		ColaTDA cola = new ColaEstatica();
+		cola.acolar(1);
+		cola.acolar(2);
+		cola.acolar(3);
+		cola.acolar(4);
+		cola.acolar(5);
+		cola.acolar(6);
 		
-		DiccionarioMultipleTDA dict = 
-				new DiccionarioMultipleEstatico();
-		
-		dict.agregar(1, 1);
-		dict.agregar(7, 7);
-		dict.agregar(3, 3);
-		dict.agregar(1, 0);
-		
-		
-		DiccionarioUtils.mostrarDiccionario(dict);
-		dict.eliminarValor(7, 7);
-		System.out.println("");
-		DiccionarioUtils.mostrarDiccionario(dict);
-		
+		ColaTDA cola2 = new ColaEstatica();
+		cola2.acolar(6);
+		cola2.acolar(5);
+		cola2.acolar(4);
+		cola2.acolar(3);
+		cola2.acolar(2);
+		cola2.acolar(1);
+		System.out.println(EjercicioColas.esInversa(cola, cola2));
 		
 	}
 

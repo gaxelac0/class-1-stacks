@@ -5,7 +5,7 @@ import main.interfaces.ColaTDA;
 public class ColaEstatica implements ColaTDA {
 	
 	int[] a;
-	int indice;
+	int cant;
 	
 	public ColaEstatica() {
 		this.inicializarCola();
@@ -14,22 +14,22 @@ public class ColaEstatica implements ColaTDA {
 	@Override
 	public void inicializarCola() {
 		a = new int[10];
-		indice = 0;
+		cant = 0;
 	}
 
 	@Override
 	public void acolar(int x) {
-		a[indice] = x;
-		indice++;
+		a[cant] = x;
+		cant++;
 	}
 
 	@Override
 	public void desacolar() {
 		// TODO check
-		for(int i = 0; i <= indice; i++) {
+		for(int i = 0; i <= cant; i++) {
 			a[i] = a[i+1];
 		}
-		indice--;
+		cant--;
 	}
 
 	@Override
@@ -39,7 +39,7 @@ public class ColaEstatica implements ColaTDA {
 
 	@Override
 	public boolean colaVacia() {
-		return indice == 0;
+		return cant == 0;
 	}
 
 }
