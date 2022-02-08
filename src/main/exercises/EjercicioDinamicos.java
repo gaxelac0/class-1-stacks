@@ -45,14 +45,14 @@ public class EjercicioDinamicos {
 		return inicial;
 	}
 	
-	public static void nodoAlFinal() {
+	public static void main() {
 	
 		Nodo inicial = null;
-		inicial = agregarNodoFinal(inicial, 1);
-		inicial = agregarNodoFinal(inicial, 2);
-		inicial = agregarNodoFinal(inicial, 3);
-		inicial = agregarNodoFinal(inicial, 4);
-		inicial = agregarNodoFinal(inicial, 5);
+		inicial = agregarOrdenadamente(inicial, 1);
+		inicial = agregarOrdenadamente(inicial, 7);
+		inicial = agregarOrdenadamente(inicial, 3);
+		inicial = agregarOrdenadamente(inicial, 4);
+		inicial = agregarOrdenadamente(inicial, 5);
 		mostrarLista(inicial);
 	}
 	
@@ -62,6 +62,32 @@ public class EjercicioDinamicos {
 		while(viajero != null) {
 			System.out.println(viajero.valor);
 			viajero = viajero.sig;
+		}
+	}
+	
+	// TODO @gaxelac0 ESTE METODO NO FUNCIONA
+	public static Nodo agregarOrdenadamente(Nodo inicio, int valor) {
+		
+		Nodo nuevo = new Nodo();
+		nuevo.valor = valor;
+		if(inicio == null) {
+			inicio = nuevo;
+			return inicio;
+		}
+		else {
+			
+			Nodo viajero = inicio;
+			while(viajero.sig != null && viajero.sig.valor < valor) {
+				viajero = viajero.sig;
+			}
+			
+			if(viajero.sig != null) {
+				nuevo.sig = viajero.sig.sig;
+				viajero.sig = nuevo;
+			}
+			
+			
+			return inicio;
 		}
 	}
 
