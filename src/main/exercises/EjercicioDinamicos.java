@@ -53,6 +53,9 @@ public class EjercicioDinamicos {
 		inicial = agregarOrdenadamente(inicial, 3);
 		inicial = agregarOrdenadamente(inicial, 4);
 		inicial = agregarOrdenadamente(inicial, 5);
+		
+		inicial = eliminar(inicial, 3);
+		
 		mostrarLista(inicial);
 	}
 	
@@ -65,7 +68,7 @@ public class EjercicioDinamicos {
 		}
 	}
 	
-	// TODO @gaxelac0 ESTE METODO NO FUNCIONA
+	// inserto: 1, 7, 3, 4, 5
 	public static Nodo agregarOrdenadamente(Nodo inicio, int valor) {
 		
 		Nodo nuevo = new Nodo();
@@ -82,10 +85,12 @@ public class EjercicioDinamicos {
 			}
 			
 			if(viajero.sig != null) {
-				nuevo.sig = viajero.sig.sig;
+				nuevo.sig = viajero.sig;
 				viajero.sig = nuevo;
 			}
-			
+			else {
+				viajero.sig = nuevo;
+			}
 			
 			return inicio;
 		}
