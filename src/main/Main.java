@@ -1,24 +1,27 @@
 package main;
 
-import main.exercises.EjercicioDiccionarios;
-import main.impl.diccionario.DiccionarioMultipleEstatico;
-import main.interfaces.DiccionarioMultipleTDA;
-import main.utils.DiccionarioUtils;
+import main.impl.cola.ColaPrioridadDinamica;
+import main.interfaces.ColaPrioridadTDA;
+import main.utils.ColaPrioridadUtils;
 
 
 public class Main {
 
 	public static void main(String[] args) {
 		
-		DiccionarioMultipleTDA m = new DiccionarioMultipleEstatico();
-		m.agregar(1, 2);
-		m.agregar(1, 3);
-		m.agregar(2, 3);
-		m.agregar(2, 1);
-		m.agregar(2, -4);
-		m.agregar(3, 1);
-		m.agregar(3, -4);
-		DiccionarioUtils.mostrarDiccionario(EjercicioDiccionarios.m2s(m));
+		// TODO luego del desencolar la prioridad y el valor se invierten, revisar.
+		ColaPrioridadTDA cola = new ColaPrioridadDinamica();
+		cola.acolarPrioridad(0, 2);
+		cola.acolarPrioridad(0, 1);
+		cola.acolarPrioridad(0, -2);
+		cola.acolarPrioridad(0, -7);
+		
+		System.out.println("");
+		ColaPrioridadUtils.mostrarCola(cola);
+		
+		cola.desencolar();
+		System.out.println("");
+		ColaPrioridadUtils.mostrarCola(cola);
 		
 
 		// TODO probar y corregir esto
