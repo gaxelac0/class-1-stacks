@@ -1,5 +1,6 @@
 package main.exercises;
 
+import main.impl.cola.ColaPrioridadDinamica;
 import main.impl.cola.ColaPrioridadEstatica;
 import main.interfaces.ColaPrioridadTDA;
 import main.utils.ColaPrioridadUtils;
@@ -15,48 +16,69 @@ public class EjecicioColaPrioridad {
 		son más prioritarios que los de la CP2.
 		b) Determinar si dos Colas con prioridad son idénticas
 	 */
-	public static ColaPrioridadTDA mergeColas(ColaPrioridadTDA cola1, ColaPrioridadTDA cola2) {
+	public static ColaPrioridadDinamica mergeColas(ColaPrioridadDinamica cola1, ColaPrioridadDinamica cola2) {
 		
-		ColaPrioridadTDA res = new ColaPrioridadEstatica();
-		ColaPrioridadTDA c1 = ColaPrioridadUtils.copiarCola(cola1);
-		ColaPrioridadTDA c2 = ColaPrioridadUtils.copiarCola(cola2);
+		ColaPrioridadDinamica res = new ColaPrioridadDinamica();
+		ColaPrioridadDinamica c1 = ColaPrioridadUtils.copiarCola(cola1);
+		ColaPrioridadDinamica c2 = ColaPrioridadUtils.copiarCola(cola2);
 		
 		int prio = 5;
 		
-		while(!c1.colaVacia()) {
+		while(!c1.colaVacia() && !c2.colaVacia()) {
 			if(c1.prioridad() > c2.prioridad()) {
 				
-				res.acolarPrioridad(prio, c1.primero());
-				prio--;
+				res.acolarPrioridad(c1.primero(), prio);
 				c1.desencolar();
+				prio--;
 			}
 			else if (c1.prioridad() < c2.prioridad()) {
 				
-				res.acolarPrioridad(prio, c2.primero());
+				res.acolarPrioridad(c2.primero(), prio);
 				c2.desencolar();
 				prio--;
-				
-				res.acolarPrioridad(prio, c1.primero());
-				c1.desencolar();
 			}
 			else if (c1.prioridad() == c2.prioridad()) {
 				
-				res.acolarPrioridad(prio, c1.primero());
+				res.acolarPrioridad(c1.primero(), prio);
 				c1.desencolar();
 				prio--;
 				
-				res.acolarPrioridad(prio, c2.primero());
+				res.acolarPrioridad(c2.primero(), prio);
 				c2.desencolar();
+				prio--;
 			}
 		}
 		
+		while(!c1.colaVacia()) {
+			res.acolarPrioridad(c1.primero(), prio);
+			prio--;
+			c1.desencolar();
+		}
+		
 		while(!c2.colaVacia()) {
-			res.acolarPrioridad(prio, c2.primero());
+			res.acolarPrioridad(c2.primero(), prio);
 			prio--;
 			c2.desencolar();
 		}
 		
 		return res;
+	}
+	
+	public static void mainMergeColas() {
+		ColaPrioridadDinamica c1 = new ColaPrioridadDinamica();
+		c1.acolarPrioridad(11, 8);
+		c1.acolarPrioridad(22, 7);
+		c1.acolarPrioridad(11, 6);
+		c1.acolarPrioridad(7, 6);
+		
+		ColaPrioridadDinamica c2 = new ColaPrioridadDinamica();
+		c2.acolarPrioridad(9, 9);
+		c2.acolarPrioridad(13, 8);
+		c2.acolarPrioridad(15, 7);
+		c2.acolarPrioridad(7, 6);
+		
+		ColaPrioridadDinamica res = mergeColas(c1, c2);
+		ColaPrioridadUtils.mostrarCola(res);
 	}
 
 }

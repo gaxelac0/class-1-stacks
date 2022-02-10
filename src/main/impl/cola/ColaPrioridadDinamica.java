@@ -2,11 +2,6 @@ package main.impl.cola;
 
 import main.interfaces.ColaPrioridadTDA;
 
-/**
- * TODO: comparar con implementacion del profesor
- * @author alu702
- *
- */
 public class ColaPrioridadDinamica implements ColaPrioridadTDA {
 	
 	class Nodo {
@@ -31,26 +26,19 @@ public class ColaPrioridadDinamica implements ColaPrioridadTDA {
 		Nodo nuevo = new Nodo();
 		nuevo.valor = valor;
 		nuevo.prioridad = prioridad;
-		if(primero == null) {
+		if(primero == null || primero.prioridad < prioridad) {
+			nuevo.sig = primero;
 			primero = nuevo;
 		}
 		else {
+
+			Nodo aux = primero;
+			while(aux.sig != null && aux.sig.prioridad >= prioridad) {
+				aux = aux.sig;
+			}
 			
-			if(primero.prioridad < prioridad) {
-				nuevo.sig = primero;
-				primero = nuevo;
-			}
-			else {
-				
-				// TODO resta revisar esta parte (revisar Diagrama2)
-				Nodo aux = primero;
-				while(aux.sig != null && aux.sig.prioridad > prioridad) {
-					aux = aux.sig;
-				}
-				
-				nuevo.sig = aux.sig;
-				aux.sig = nuevo;
-			}
+			nuevo.sig = aux.sig;
+			aux.sig = nuevo;
 		}
 	}
 

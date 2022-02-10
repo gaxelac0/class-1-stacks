@@ -7,7 +7,7 @@ import main.interfaces.ColaParcialTDA;
 // insertarizq(1)
 // insertarizq(2)
 // insertarizq(3)
-// resultado [1, 2, 3]
+// resultado [3,2,1]
 // Implementar una cola que se pueda sacar desde la izquiera y desde la derecha
 // tambien se puede insertar a la izquierda o a la derecha
 public class ColaParcialDinamica implements ColaParcialTDA {

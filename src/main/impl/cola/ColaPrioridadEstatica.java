@@ -23,7 +23,7 @@ public class ColaPrioridadEstatica implements ColaPrioridadTDA {
 	}
 
 	@Override
-	public void acolarPrioridad(int prioridad, int valor) {
+	public void acolarPrioridad(int valor, int prioridad) {
 
 		int j = indice;
 		while(j > 0 && elementos[j-1].prioridad >= prioridad) {
