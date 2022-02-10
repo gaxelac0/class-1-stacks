@@ -5,7 +5,7 @@ import main.impl.cola.ColaPrioridadEstatica;
 import main.interfaces.ColaPrioridadTDA;
 import main.utils.ColaPrioridadUtils;
 
-public class EjecicioColaPrioridad {
+public class EjercicioColaPrioridad {
 	
 	// TODO Debuggear este metodo para corregir el pequeño error
 	// TODO revisar foto de la galeria para ver como correr el ejemplo
@@ -14,7 +14,6 @@ public class EjecicioColaPrioridad {
 		a) Combinar dos colas con prioridades CP1 y CP2, generando una nueva 
 		cola con prioridades. Considerar que a igual prioridad, los elementos de la CP1 
 		son más prioritarios que los de la CP2.
-		b) Determinar si dos Colas con prioridad son idénticas
 	 */
 	public static ColaPrioridadDinamica mergeColas(ColaPrioridadDinamica cola1, ColaPrioridadDinamica cola2) {
 		
@@ -79,6 +78,23 @@ public class EjecicioColaPrioridad {
 		
 		ColaPrioridadDinamica res = mergeColas(c1, c2);
 		ColaPrioridadUtils.mostrarCola(res);
+	}
+	
+	
+	
+//	6) A partir del TDA Cola con prioridades definido, escribir un método que permita	
+//	b) Determinar si dos Colas con prioridad son idénticas
+	public static void mainColasIdenticas() {
+		
+		ColaPrioridadDinamica c1 = new ColaPrioridadDinamica();
+		c1.acolarPrioridad(1, 2);
+		c1.acolarPrioridad(1, 3);
+		
+		ColaPrioridadDinamica c2 = new ColaPrioridadDinamica();
+		c2.acolarPrioridad(1, 2);
+		c2.acolarPrioridad(1, 3);
+		
+		System.out.println(ColaPrioridadUtils.sonIguales(c1, c2));
 	}
 
 }

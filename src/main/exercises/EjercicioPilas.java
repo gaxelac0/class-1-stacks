@@ -1,29 +1,11 @@
 package main.exercises;
 
-import main.impl.pila.PilaEstaticaTopeFinal;
+import main.impl.pila.PilaDinamica;
 import main.interfaces.PilaTDA;
 import main.utils.PilaUtils;
 
 public class EjercicioPilas {
-	
-	// Pasar una Pila a otra (dejándola en orden inverso) 1.a
-	public static void invertirPila(PilaTDA pila) {
 		
-		System.out.println("Pila Original: ");
-		PilaUtils.mostrarPila(pila);
-		System.out.println("==============================");
-		PilaTDA copia = PilaUtils.copiarPila(pila);
-		PilaTDA invertida = new PilaEstaticaTopeFinal();
-		while(!copia.pilaVacia()) {
-			invertida.apilar(copia.tope());
-			copia.desapilar();
-		}
-		System.out.println("Pila Invertida: ");
-		PilaUtils.mostrarPila(invertida);
-		System.out.println("==============================");
-	}
-	
-	
 	public static void promedioPila(PilaTDA pila) {
 		
 		int avg = 0;
@@ -37,6 +19,22 @@ public class EjercicioPilas {
 		System.out.println("Promedio: " + avg/qt);
 	}
 	
-
+	// TP3 1)a) Comprobar si una Pila P es capicúa (el elemento del tope es igual al de la base,
+	// el segundo igual al anteúltimo, etc.)
+	public static void mainEsCapicua() {
+		
+		PilaTDA pila = new PilaDinamica();
+		pila.apilar(1);
+		pila.apilar(2);
+		pila.apilar(1);
+		System.out.println(PilaUtils.esCapicua(pila));
+		
+		
+		PilaTDA pila2 = new PilaDinamica();
+		pila2.apilar(1);
+		pila2.apilar(2);
+		pila2.apilar(3);
+		System.out.println(PilaUtils.esCapicua(pila2));
+	}
 
 }

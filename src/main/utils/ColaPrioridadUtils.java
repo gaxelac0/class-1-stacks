@@ -6,6 +6,11 @@ import main.interfaces.ColaPrioridadTDA;
 
 public class ColaPrioridadUtils {
 	
+	
+	/**
+	 * copiar cola para implementacion estatica
+	 * @param cola
+	 */
 	public static ColaPrioridadTDA copiarCola(ColaPrioridadEstatica cola) {
 		
 		ColaPrioridadTDA copia = new ColaPrioridadEstatica();
@@ -25,6 +30,10 @@ public class ColaPrioridadUtils {
 		return copia;
 	}
 	
+	/**
+	 * mostrar cola para implementacion estatica
+	 * @param cola
+	 */
 	public static void mostrarCola(ColaPrioridadEstatica cola) {
 		
 		ColaPrioridadTDA copia = copiarCola(cola);
@@ -35,6 +44,10 @@ public class ColaPrioridadUtils {
 		
 	}
 	
+	/**
+	 * copiar cola para implementacion dinamica
+	 * @param cola
+	 */
 	public static ColaPrioridadDinamica copiarCola(ColaPrioridadDinamica cola) {
 		
 		ColaPrioridadDinamica copia = new ColaPrioridadDinamica();
@@ -54,6 +67,10 @@ public class ColaPrioridadUtils {
 		return copia;
 	}
 	
+	/**
+	 * mostrar cola para implementacion dinamica
+	 * @param cola
+	 */
 	public static void mostrarCola(ColaPrioridadDinamica cola) {
 		
 		ColaPrioridadTDA copia = copiarCola(cola);
@@ -62,6 +79,27 @@ public class ColaPrioridadUtils {
 			copia.desencolar();
 		}
 		
+	}
+	
+	/**
+	 * Determina si las dos colas con prioridad son identicas. 
+	 * @param c1
+	 * @param c2
+	 */
+	public static boolean sonIguales(ColaPrioridadDinamica c1, ColaPrioridadDinamica c2) {
+		
+		ColaPrioridadTDA cola = ColaPrioridadUtils.copiarCola(c1);
+		ColaPrioridadTDA cola2 = ColaPrioridadUtils.copiarCola(c2);
+		
+		// start thinking its a match
+		boolean bIguales = true;
+		while(bIguales && !cola.colaVacia()) {
+			bIguales = (cola.primero()==cola2.primero() && cola.prioridad()==cola2.prioridad());
+			cola.desencolar();
+			cola2.desencolar();
+		}
+		
+		return (bIguales&&cola2.colaVacia());
 	}
 	
 	

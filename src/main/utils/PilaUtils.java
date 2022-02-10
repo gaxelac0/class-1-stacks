@@ -1,9 +1,42 @@
 package main.utils;
 
+import main.impl.pila.PilaDinamica;
 import main.impl.pila.PilaEstaticaTopeInicial;
 import main.interfaces.PilaTDA;
 
 public class PilaUtils {
+	
+	// Pasar una Pila a otra (dejándola en orden inverso) 1.a
+	public static PilaTDA invertirPila(PilaTDA pila) {
+
+		PilaTDA copia = PilaUtils.copiarPila(pila);
+		PilaTDA invertida = new PilaDinamica();
+		while(!copia.pilaVacia()) {
+			invertida.apilar(copia.tope());
+			copia.desapilar();
+		}
+		return invertida;
+	}
+	
+	/**
+	 * verifica si una pila es capicua
+	 * @param pila
+	 * @return
+	 */
+	public static boolean esCapicua(PilaTDA pila) {
+		
+		// start thinking its a match
+		boolean bCapicua = true;
+		
+		PilaTDA copia = PilaUtils.copiarPila(pila);
+		PilaTDA invertida = invertirPila(copia);
+		while(bCapicua && !copia.pilaVacia()) {
+			bCapicua = (copia.tope()==invertida.tope());
+			copia.desapilar();
+			invertida.desapilar();
+		}
+		return bCapicua;
+	}
 	
 	public static void pilaTest() {
 		PilaTDA pila = new PilaEstaticaTopeInicial();
