@@ -40,7 +40,6 @@ public class ColaDinamica implements ColaTDA {
 
 	@Override
 	public int primero() {
-		// TODO Auto-generated method stub
 		return primero.valor;
 	}
 

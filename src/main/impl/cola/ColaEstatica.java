@@ -25,8 +25,7 @@ public class ColaEstatica implements ColaTDA {
 
 	@Override
 	public void desacolar() {
-		// TODO check
-		for(int i = 0; i <= cant; i++) {
+		for(int i = 0; i < cant; i++) {
 			a[i] = a[i+1];
 		}
 		cant--;

@@ -1,7 +1,9 @@
 package main.utils;
 
+import main.impl.conjunto.ConjuntoDinamico;
 import main.impl.pila.PilaDinamica;
 import main.impl.pila.PilaEstaticaTopeInicial;
+import main.interfaces.ConjuntoTDA;
 import main.interfaces.PilaTDA;
 
 public class PilaUtils {
@@ -16,6 +18,26 @@ public class PilaUtils {
 			copia.desapilar();
 		}
 		return invertida;
+	}
+	
+	public static PilaTDA eliminarDuplicados(PilaTDA pila) {
+		
+		ConjuntoTDA existentes = new ConjuntoDinamico();
+		PilaTDA resultado = new PilaDinamica();
+		
+	
+		PilaTDA invertida = PilaUtils.invertirPila(PilaUtils.copiarPila(pila));
+		while(!invertida.pilaVacia()) {
+			
+			int t = invertida.tope();
+			if(!existentes.pertenece(t)) {
+				resultado.apilar(t);
+				existentes.agregar(t);
+			}
+			invertida.desapilar();
+		}
+		
+		return resultado;
 	}
 	
 	/**
@@ -38,16 +60,27 @@ public class PilaUtils {
 		return bCapicua;
 	}
 	
-	public static void pilaTest() {
-		PilaTDA pila = new PilaEstaticaTopeInicial();
-		pila.apilar(1);
-		pila.apilar(2);
-		pila.apilar(3);
-		pila.apilar(4);
-		pila.apilar(5);
-		mostrarPila(pila);
+	public static ConjuntoTDA obtenerElementosRepetidos(PilaTDA pila) {
 		
+		ConjuntoTDA elementos = new ConjuntoDinamico();
+		ConjuntoTDA repetidos = new ConjuntoDinamico();
+		
+		PilaTDA copia = PilaUtils.copiarPila(pila);
+		while(!copia.pilaVacia()) {
+			
+			int t = copia.tope();
+			if(elementos.pertenece(t)) {
+				repetidos.agregar(t);
+			}
+			else {
+				elementos.agregar(t);
+			}
+			copia.desapilar();
+		}
+
+		return repetidos;
 	}
+	
 	
 	public static void mostrarPila(PilaTDA pila) {
 		
@@ -74,5 +107,4 @@ public class PilaUtils {
 		}
 		return copia;
 	}
-
 }

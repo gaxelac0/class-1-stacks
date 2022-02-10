@@ -18,7 +18,7 @@ public class PilaEstaticaTopeInicial implements PilaTDA {
 
 	@Override
 	public void inicializarPila() {
-		elems = new int[10];
+		elems = new int[100];
 		indice = 0;
 	}
 
