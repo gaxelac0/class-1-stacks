@@ -1,26 +1,22 @@
 package main;
 
-import main.impl.conjunto.ConjuntoDinamico;
-import main.impl.diccionario.DiccionarioSimpleDinamico;
-import main.interfaces.DiccionarioSimpleTDA;
-import main.utils.ConjuntoUtils;
+import main.impl.diccionario.DiccionarioMultipleDinamico;
 import main.utils.DiccionarioUtils;
 
 public class Main {
 
 	public static void main(String[] args) {
 		
-		DiccionarioSimpleTDA d = new DiccionarioSimpleDinamico();
-		d.agregar(101, 0);
-		d.agregar(44, 30);
-		d.agregar(-22, 66);
-		d.agregar(8, 34);
+		DiccionarioMultipleDinamico m = new DiccionarioMultipleDinamico();
+		m.agregar(4, 1);
+		m.agregar(4, 1);
+		m.agregar(4, 2);
 		
-		d.eliminar(-22);
+		m.agregar(7, 3);
 		
-		DiccionarioUtils.mostrarDiccionario(d);
+		m.eliminarValor(4, 1);
 		
-		ConjuntoUtils.mostrarConjunto((ConjuntoDinamico)d.claves());
+		DiccionarioUtils.mostrarDiccionario(m);
 
 	}
 }

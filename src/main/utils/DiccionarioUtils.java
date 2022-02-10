@@ -1,5 +1,6 @@
 package main.utils;
 
+import main.impl.conjunto.ConjuntoDinamico;
 import main.interfaces.ConjuntoTDA;
 import main.interfaces.DiccionarioMultipleTDA;
 import main.interfaces.DiccionarioSimpleTDA;
@@ -23,7 +24,9 @@ public class DiccionarioUtils {
 		while(!claves.conjuntoVacio()) {
 			
 			int n = claves.elegir();
-			System.out.println("Clave: " + n + ", Valor: " + dict.recuperar(n));
+			System.out.print("Clave: " + n + ", " + "Valores: {");
+			ConjuntoUtils.mostrarConjunto((ConjuntoDinamico)dict.recuperar(n));
+			System.out.println( "}");
 			claves.quitar(n);
 		}
 	}

@@ -12,7 +12,7 @@ public class ConjuntoUtils {
 		while(!copia.conjuntoVacio()) {
 			int e = copia.elegir();
 			copia.quitar(e);
-			System.out.println(e);
+			System.out.print(e);
 		}
 	}
 	
@@ -22,7 +22,7 @@ public class ConjuntoUtils {
 		while(!copia.conjuntoVacio()) {
 			int e = copia.elegir();
 			copia.quitar(e);
-			System.out.println(e);
+			System.out.print(e);
 		}
 	}
 	

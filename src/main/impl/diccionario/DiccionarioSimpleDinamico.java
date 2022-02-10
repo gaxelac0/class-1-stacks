@@ -4,6 +4,7 @@ import main.impl.conjunto.ConjuntoDinamico;
 import main.interfaces.ConjuntoTDA;
 import main.interfaces.DiccionarioSimpleTDA;
 
+// Diagrama 4
 public class DiccionarioSimpleDinamico implements DiccionarioSimpleTDA {
 	
 	class Nodo {
