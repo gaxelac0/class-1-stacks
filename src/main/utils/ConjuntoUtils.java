@@ -72,4 +72,15 @@ public class ConjuntoUtils {
 		return copia;
 	}
 
+	public static int sumarConjunto(ConjuntoTDA valores) {
+		int n = 0;
+		while(!valores.conjuntoVacio()) {
+			int e = valores.elegir();
+			valores.quitar(e);
+			n += e;
+		}
+		
+		return n;
+	}
+
 }

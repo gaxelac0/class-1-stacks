@@ -2,13 +2,18 @@ package main.impl.cola;
 
 import main.interfaces.ColaParcialTDA;
 
+// TODO esta implementación no está bien. Se deben ir insertando a la derecha o a la izquierda
+// no hacia el centro.
+// insertarizq(1)
+// insertarizq(2)
+// insertarizq(3)
+// resultado [1, 2, 3]
 // Implementar una cola que se pueda sacar desde la izquiera y desde la derecha
 // tambien se puede insertar a la izquierda o a la derecha
 public class ColaParcialDinamica implements ColaParcialTDA {
 	
 	private class Nodo {
 		private int valor;
-		private int prioridad;
 		private Nodo sig;
 	}
 	private Nodo izquierda;

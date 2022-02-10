@@ -42,15 +42,25 @@ public class EjercicioColas {
 	}
 	
 	// (4.b) Invertir el contenido de una Cola (NO usar Pilas auxiliares)
-	public static void invertirCola(ColaTDA cola) {
-		PilaTDA pila = new PilaEstaticaTopeFinal();
-		ColaTDA copia = ColaUtils.copiarCola(cola);
+	public static ColaTDA invertirCola(ColaTDA cola) {
+
+		if(cola.colaVacia()) {
+			return cola;
+		}
+		else {
+			int x = cola.primero();
+			cola.desacolar();
+			
+			ColaTDA invertida = invertirCola(cola);
+			invertida.acolar(x);
+			return invertida;
+		}
 	}
 
 	// Determinar si el final de la Cola C1 coincide o no con la Cola C2.
 	public static boolean esFinalIdentico(ColaTDA cola, ColaTDA cola2) {
-		ColaTDA invertida = invertirColaAux(cola);
-		ColaTDA invertida2 = invertirColaAux(cola2);
+		ColaTDA invertida = invertirCola(cola);
+		ColaTDA invertida2 = invertirCola(cola2);
 		return (invertida.primero()==invertida2.primero());
 		
 	}
@@ -58,14 +68,14 @@ public class EjercicioColas {
 	//Determinar si una Cola es capicúa o no. Para ser capicúa debe cumplir
 	// que el primer elemento es igual al último, el segundo igual al penúltimo, etc.
 	public static boolean esCapicua(ColaTDA cola) {
-		ColaTDA invertida = invertirColaAux(cola);
+		ColaTDA invertida = invertirCola(cola);
 		return ColaUtils.sonIguales(cola, invertida);
 	}
 	
 	// Determinar si la Cola C1 es la inversa de la Cola C2. Dos Colas serán
 	// inversas, si tienen los mismos elementos pero en orden inverso
 	public static boolean esInversa(ColaTDA cola, ColaTDA cola2) {
-		ColaTDA invertida = invertirColaAux(cola);
+		ColaTDA invertida = invertirCola(cola);
 		return ColaUtils.sonIguales(invertida, cola2);
 	}
 
