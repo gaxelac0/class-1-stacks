@@ -12,8 +12,9 @@ public class ConjuntoUtils {
 		while(!copia.conjuntoVacio()) {
 			int e = copia.elegir();
 			copia.quitar(e);
-			System.out.print(e);
+			System.out.print(e + " ");
 		}
+		System.out.println("");
 	}
 	
 	public static void mostrarConjunto(ConjuntoEstatico conjunto) {
@@ -22,8 +23,9 @@ public class ConjuntoUtils {
 		while(!copia.conjuntoVacio()) {
 			int e = copia.elegir();
 			copia.quitar(e);
-			System.out.print(e);
+			System.out.print(e + " ");
 		}
+		System.out.println("");
 	}
 	
 	public static ConjuntoTDA copiarConjunto(ConjuntoEstatico conjunto) {
