@@ -1,21 +1,20 @@
 package main;
 
-import main.exercises.EjercicioArboles;
-import main.impl.arbol.ABB;
+import main.impl.grafo.GrafoEstatico;
+import main.interfaces.GrafoTDA;
+import main.utils.GrafoUtils;
 
 public class Main {
 
 	public static void main(String[] args) {
 		
-		ABB arbol = new ABB();
-		arbol.agregarElem(52);
-		arbol.agregarElem(44);
-		arbol.agregarElem(77);
-		arbol.agregarElem(3);
-		arbol.agregarElem(45);
-		arbol.agregarElem(102);
-		arbol.agregarElem(96);
-				
-		System.out.println(EjercicioArboles.cantNodosNivelN(arbol, 3));
+		GrafoTDA grafo = new GrafoEstatico();
+		grafo.agregarVertice(1);
+		grafo.agregarVertice(2);
+		grafo.agregarArista(1, 2, -1);
+		System.out.println(grafo.existeArista(1, 2));
+		System.out.println(grafo.pesoArista(1, 2));
+		GrafoUtils.mostrarGrafo(grafo);
+		
 	}
 }

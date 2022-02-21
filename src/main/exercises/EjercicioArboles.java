@@ -204,17 +204,11 @@ public class EjercicioArboles {
 		if(a1.arbolVacio() && a2.arbolVacio()) {
 			return true;
 		}
-		else if (!a1.hijoIzq().arbolVacio() && a2.hijoIzq().arbolVacio()) {
+		else if (a1.arbolVacio() || a2.arbolVacio()) {
 			return false;
-		}
-		else if (!a1.hijoDer().arbolVacio() && a2.hijoDer().arbolVacio()) {
-			return false;
-		}
-		else if (!a1.hijoIzq().arbolVacio() && !a2.hijoIzq().arbolVacio()) {
-			return mismaForma(a1.hijoIzq(), a2.hijoIzq());
 		}
 		else {
-			return mismaForma(a1.hijoDer(), a2.hijoDer());
+			return mismaForma(a1.hijoIzq(), a2.hijoIzq()) && mismaForma(a1.hijoDer(), a2.hijoDer());
 		}
 	}
 	
