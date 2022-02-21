@@ -38,6 +38,7 @@ public class GrafoUtils {
 		Pendientes.inicializarPila();
 		ConjuntoTDA Visitados = new ConjuntoDinamico();
 		Visitados.inicializarConjunto();
+		
 		Pendientes.apilar(v);
 		Visitados.agregar(v);
 		while(! Pendientes.pilaVacia()) {
