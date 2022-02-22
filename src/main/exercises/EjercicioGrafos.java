@@ -12,10 +12,48 @@ public class EjercicioGrafos {
 	una arista que comienza en v y termina en x y otra que comienza en x y termina en w.
 	 */
 	public static ConjuntoTDA adyacenteDoble(GrafoTDA g, int v) {
-
-		// TODO
-
-		return null;
+		
+		ConjuntoTDA dobles = new ConjuntoDinamico();
+		
+		ConjuntoTDA adyacentes = adyacentes(g, v);
+		while(!adyacentes.conjuntoVacio()) {
+			
+			int e = adyacentes.elegir();
+			adyacentes.quitar(e);
+			
+			ConjuntoTDA aux = adyacentes(g, e);
+			while(!aux.conjuntoVacio()) {
+				
+				int x = aux.elegir();
+				aux.quitar(x);
+				dobles.agregar(x);	
+			}
+		}
+		
+		return dobles;
+	}
+	
+	/**
+	 * Metodo que recupera los adyacentes del vertice v
+	 * @param g grafo
+	 * @param v valor de vertice v
+	 * @return conjunto de adyacentes
+	 */
+	public static ConjuntoTDA adyacentes(GrafoTDA g, int v) {
+		
+		ConjuntoTDA adyacentes = new ConjuntoDinamico();
+		ConjuntoTDA vertices = g.vertices();
+		while(!vertices.conjuntoVacio()) {
+			
+			int e = vertices.elegir();
+			vertices.quitar(e);
+			
+			if(g.existeArista(e, v)) {
+				adyacentes.agregar(e);
+			}
+		}
+		
+		return adyacentes;
 	}
 
 	/**
@@ -40,51 +78,4 @@ public class EjercicioGrafos {
 		}
 		return predecesores;
 	}
-
-
-	/**
-	 * Ejercicio TP6.4) resolución por compañero TODO: revisar
-	 * @param grafo
-	 * @param vertice
-	 * @return
-	 */
-	public static ConjuntoTDA DistanciaADos (GrafoTDA grafo, int vertice) {
-
-
-		ConjuntoTDA ConjuntoGral = new ConjuntoDinamico();
-		ConjuntoGral.inicializarConjunto();
-
-		ConjuntoTDA ConjuntoVecinos = new ConjuntoDinamico();
-		ConjuntoVecinos.inicializarConjunto();
-
-		ConjuntoTDA ConjuntoAlcanzables = new ConjuntoDinamico();
-		ConjuntoAlcanzables.inicializarConjunto();
-
-		ConjuntoGral = grafo.vertices();
-
-		while (!ConjuntoGral.conjuntoVacio()) {
-			int aux = ConjuntoGral.elegir();
-
-			if (grafo.existeArista(vertice, aux)){
-				ConjuntoVecinos.agregar(aux);
-				ConjuntoAlcanzables.agregar(aux);
-			}
-			ConjuntoGral.quitar(aux);
-		}
-
-		while (!ConjuntoVecinos.conjuntoVacio()) {
-			ConjuntoGral = grafo.vertices();
-			int auxVecino = ConjuntoVecinos.elegir();
-			while (!ConjuntoGral.conjuntoVacio()) {
-				int aux2 = ConjuntoGral.elegir();
-				if (grafo.existeArista(auxVecino, aux2)){
-					ConjuntoAlcanzables.agregar(aux2);	
-				}
-				ConjuntoGral.quitar(aux2);
-			}
-			ConjuntoVecinos.quitar(auxVecino);
-		}	
-		return ConjuntoAlcanzables;
-	}
-
 }
