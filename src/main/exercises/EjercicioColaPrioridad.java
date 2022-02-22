@@ -1,8 +1,6 @@
 package main.exercises;
 
 import main.impl.cola.ColaPrioridadDinamica;
-import main.impl.cola.ColaPrioridadEstatica;
-import main.interfaces.ColaPrioridadTDA;
 import main.utils.ColaPrioridadUtils;
 
 public class EjercicioColaPrioridad {

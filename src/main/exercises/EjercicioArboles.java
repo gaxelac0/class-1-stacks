@@ -44,7 +44,7 @@ public class EjercicioArboles {
 	public static int altura(ABBTDA a) {
 		
 		if(a.arbolVacio()) {
-			return 0;
+			return -1;
 		}
 		else {
 			int izq = 1 + altura(a.hijoIzq());

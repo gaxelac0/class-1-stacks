@@ -3,6 +3,7 @@ package main.utils;
 public class ListaDinamicaUtils {
 	
 
+		@SuppressWarnings("unused")
 		private static Nodo agregarAdelante(Nodo origen, int x) {
 			Nodo nuevo = new Nodo();
 			nuevo.valor = x;
@@ -17,6 +18,7 @@ public class ListaDinamicaUtils {
 		 * Muestra la lista dinamica
 		 * @param origen
 		 */
+		@SuppressWarnings("unused")
 		private static void mostrarListaRecursiva(Nodo origen) {
 			
 			if(origen != null) {
@@ -30,6 +32,7 @@ public class ListaDinamicaUtils {
 		 * Muestra la lista dinamica
 		 * @param origen
 		 */
+		@SuppressWarnings("unused")
 		private static void mostrarLista(Nodo origen) {
 			
 			Nodo aux = origen;

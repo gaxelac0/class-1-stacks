@@ -61,7 +61,7 @@ public class GrafoDinamico implements GrafoTDA {
 	public void agregarArista(int v1, int v2, int peso) {
 		
 		NodoGrafo o = vertice2Nodo(v1);
-		NodoGrafo d = vertice2Nodo(v1);
+		NodoGrafo d = vertice2Nodo(v2);
 
 		NodoArista nueva = new NodoArista();
 		nueva.peso = peso;
