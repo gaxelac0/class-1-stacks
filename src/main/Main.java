@@ -19,6 +19,5 @@ public class Main {
 		grafo.agregarArista(2, 1, -1);
 		ConjuntoUtils.mostrarConjunto((ConjuntoDinamico)EjercicioGrafos.predecesores(grafo, 1));
 		GrafoUtils.mostrarGrafo(grafo);
-		
 	}
 }

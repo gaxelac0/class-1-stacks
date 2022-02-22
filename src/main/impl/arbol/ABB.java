@@ -70,7 +70,7 @@ public class ABB implements ABBTDA {
 				raiz.valor = mayor(raiz.hijoIzq);
 				raiz.hijoIzq.eliminarElem(raiz.valor);
 			}
-			else if (raiz.valor == x && hijoIzq().arbolVacio()) {
+			else if (raiz.valor == x) {
 				raiz.valor = menor(raiz.hijoDer);
 				raiz.hijoDer.eliminarElem(raiz.valor);
 			}
