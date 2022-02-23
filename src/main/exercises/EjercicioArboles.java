@@ -223,28 +223,18 @@ public class EjercicioArboles {
 		if(a1.arbolVacio() && a2.arbolVacio()) {
 			return true;
 		}
+		else if (a1.arbolVacio() || a2.arbolVacio()) {
+			return false;
+		}
 		else if (a1.raiz() != a2.raiz()) {
 			return false;
 		}
-		else if (!a1.hijoIzq().arbolVacio() && !a2.hijoIzq().arbolVacio()
-				&& a1.hijoIzq().raiz() != a2.hijoIzq().raiz()) {
-			return false;
-		}
-		else if (!a1.hijoDer().arbolVacio() && !a2.hijoDer().arbolVacio()
-				&& a1.hijoDer().raiz() != a2.hijoDer().raiz()) {
-			return false;
-		}
-		else if (!a1.hijoIzq().arbolVacio() && !a2.hijoIzq().arbolVacio()
-				&& a1.hijoIzq().raiz() == a2.hijoIzq().raiz()) {
-			return sonIguales(a1.hijoIzq(), a2.hijoIzq());
-		}
-		else {
-			return sonIguales(a1.hijoDer(), a2.hijoDer());
-		}
+		else 
+			return sonIguales(a1.hijoIzq(), a2.hijoIzq()) && sonIguales(a1.hijoDer(), a2.hijoDer());
 	}
 	
 	/**
-	 * Calcula la cantidad de elementos que el arbol enviado por parametro posee en el nivel N enviado por parametro.
+	 * Calcula la cantidad de elementos posee en el nivel N enviado por parametro.
 	 * @param a arbol
 	 * @param n nivel del arbol
 	 * @return cantidad de elementos en el nivel n en el arbol a

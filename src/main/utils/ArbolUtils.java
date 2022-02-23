@@ -7,7 +7,7 @@ public class ArbolUtils {
 	public static void preOrder(ABBTDA a) {
 
 		if(!a.arbolVacio()) {
-			System.out.println(a.raiz()  + " ");
+			System.out.print(a.raiz()  + " ");
 			preOrder(a.hijoIzq());
 			preOrder(a.hijoDer());	
 		}
@@ -25,7 +25,7 @@ public class ArbolUtils {
 		if(!a.arbolVacio()) {
 			postOrder(a.hijoIzq());
 			postOrder(a.hijoDer());
-			System.out.println(a.raiz()  + " ");
+			System.out.print(a.raiz()  + " ");
 		}
 	}
 }

@@ -48,7 +48,7 @@ public class EjercicioGrafos {
 			int e = vertices.elegir();
 			vertices.quitar(e);
 			
-			if(g.existeArista(e, v)) {
+			if(g.existeArista(v, e)) {
 				adyacentes.agregar(e);
 			}
 		}
@@ -77,5 +77,60 @@ public class EjercicioGrafos {
 			}
 		}
 		return predecesores;
+	}
+	
+	
+	/**
+	 * Dado un Grafo G escribir un método que permita obtener el conjunto de los vértices aislados
+		en G.
+		Se define que un vértice v es aislado si v no tiene aristas entrantes ni salientes.
+	 */
+	public static ConjuntoTDA aislados(GrafoTDA g) {
+		
+		ConjuntoTDA aislados = g.vertices();
+		
+		ConjuntoTDA vertices = g.vertices();
+		while(!vertices.conjuntoVacio()) {
+			
+			int un_vertice = vertices.elegir();
+			vertices.quitar(un_vertice);
+			
+			ConjuntoTDA verticesAux = g.vertices();
+			while(!verticesAux.conjuntoVacio()) {
+				
+				int otro_vertice = verticesAux.elegir();
+				verticesAux.quitar(otro_vertice);
+				
+				if(g.existeArista(un_vertice, otro_vertice) || g.existeArista(otro_vertice, un_vertice)) {
+					aislados.quitar(un_vertice);
+				}
+			}
+		}
+		
+		return aislados;	
+	}
+	
+	/**
+	 * Dado un Grafo G y dos vértices v1 y v2, escribir un método que permita obtener el conjunto
+		de todos los vértices puente entre v1 y v2.
+		Se define que un vértice p es puente entre dos vértices o y d, si hay una arista que
+		comienza en o y termina en p y otra que comienza en p y termina en d.
+	 */
+	public static ConjuntoTDA puentes(GrafoTDA g, int v1, int v2) {
+		
+		ConjuntoTDA puentes = new ConjuntoDinamico();
+		ConjuntoTDA adyacentes = adyacentes(g, v1);
+		
+		while(!adyacentes.conjuntoVacio()) {
+			
+			int z = adyacentes.elegir();
+			adyacentes.quitar(z);
+			
+			if(g.existeArista(z, v2)) {
+				puentes.agregar(z);
+			}
+		}
+		
+		return puentes;
 	}
 }
