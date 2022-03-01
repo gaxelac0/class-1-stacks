@@ -3,10 +3,33 @@ package main.utils;
 import main.impl.conjunto.ConjuntoDinamico;
 import main.impl.pila.PilaDinamica;
 import main.impl.pila.PilaEstaticaTopeInicial;
+import main.impl.pila.PilaLimitada;
 import main.interfaces.ConjuntoTDA;
+import main.interfaces.PilaLimitadaTDA;
 import main.interfaces.PilaTDA;
 
 public class PilaUtils {
+	
+	/**
+	 * Genera el conjunto de elementos de la pila p
+	 * @param p pila
+	 * @return return conjunto de elementos de la pila
+	 */
+	public static ConjuntoTDA elementos(PilaTDA p) {
+		
+		ConjuntoTDA elementos = new ConjuntoDinamico();
+		
+		PilaTDA copia = PilaUtils.copiarPila(p);		
+		while(!copia.pilaVacia()) {
+			
+			int t = copia.tope();
+			copia.desapilar();
+			
+			elementos.agregar(t);
+		}
+		
+		return elementos;
+	}
 	
 	// Pasar una Pila a otra (dejándola en orden inverso) 1.a
 	public static PilaTDA invertirPila(PilaTDA pila) {
@@ -102,6 +125,39 @@ public class PilaUtils {
 		
 		while(!aux.pilaVacia()) {
 			pila.apilar(aux.tope());
+			copia.apilar(aux.tope());
+			aux.desapilar();
+		}
+		return copia;
+	}
+	
+	// cuadratico
+	public static void mostrarPila(PilaLimitadaTDA pila, int limite) {
+		
+		PilaLimitadaTDA aux = copiarPila(pila, limite);
+		
+		System.err.print("[ ");
+		while(!aux.pilaVacia()) {
+			System.out.print(aux.tope() + " ");
+			aux.desapilar();
+		}
+		System.err.println("]");
+		
+	}
+	
+	// cuadratico
+	public static PilaLimitadaTDA copiarPila(PilaLimitadaTDA pila, int limite) {
+		PilaLimitadaTDA copia = new PilaLimitada();
+		copia.inicializarPila(limite);
+		PilaLimitadaTDA aux = new PilaLimitada();
+		aux.inicializarPila(limite);
+		while(!pila.pilaVacia()) { 
+			aux.apilar(pila.tope());
+			pila.desapilar();
+		}
+		
+		while(!aux.pilaVacia()) {
+			pila.apilar(aux.tope()); // cuadratico porque apilar es lineal en el peor caso
 			copia.apilar(aux.tope());
 			aux.desapilar();
 		}

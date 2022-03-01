@@ -39,7 +39,16 @@ public class EjercicioArboles {
 	}
 	
 	/*
-	 * determina la altura de un arbol. la raiz cuenta como un nivel.
+	 * determina la altura de un arbol.
+	 * 
+	 * 	 * (40 p) Un ejercicio tomado de la guí a. La altura de un árbol se definecomo la máxima distancia medida de
+	 * 	 "saltos" cutre la raíz y la hoja más distante.
+		Se pide:
+		a) Defina y <'xpliqne uua estrategia para encontrar la al tma <l e un árhol
+		binario de búsqueda, es decir, un objeto de tipo ABBTDA.
+		b) Escriba un método externo en Java que reciba el árbol y devuel va
+		su al tura . Obser ve que un árbol vacío debe tener altura I para
+		distinguirlo de un árbol co n un único nodo, que tiene altura ll.
 	 */
 	public static int altura(ABBTDA a) {
 		
@@ -164,6 +173,7 @@ public class EjercicioArboles {
 		if(a.arbolVacio()) {
 			return 0;
 		}
+		
 		if (a.hijoIzq().arbolVacio()) {
 			return a.raiz();
 		}

@@ -1,26 +1,28 @@
 package main;
 
-import main.exercises.EjercicioArboles;
-import main.impl.arbol.ABB;
-import main.interfaces.ABBTDA;
+import main.exercises.EjercicioPilas;
+import main.impl.pila.PilaDinamica;
+import main.interfaces.PilaTDA;
 
 public class Main {
 
 	public static void main(String[] args) {
 				
-		ABBTDA a = new ABB();
-		a.agregarElem(7);
-		a.agregarElem(8);
-		a.agregarElem(4);
-		a.agregarElem(9);
+		PilaTDA p1 = new PilaDinamica();
+		p1.apilar(1);
+		p1.apilar(2);
+		p1.apilar(3);
+		p1.apilar(4);
 		
 		
-		ABBTDA b = new ABB();
-		b.agregarElem(7);
-		b.agregarElem(8);
-		b.agregarElem(4);
-		b.agregarElem(9);
+		PilaTDA p2 = new PilaDinamica();
+		p2.apilar(1);
+		p2.apilar(2);
+		p2.apilar(3);
+		p2.apilar(4);
+		p2.apilar(5);
+
 		
-		System.out.println(EjercicioArboles.sonIguales(a, b));
+		System.out.println(EjercicioPilas.sonIguales(p1, p2));
 	}
 }
