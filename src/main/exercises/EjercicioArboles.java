@@ -258,4 +258,62 @@ public class EjercicioArboles {
 			return cantNodosNivelN(a.hijoIzq(), n - 1) + 
 					cantNodosNivelN(a.hijoDer(), n - 1);
 	}
+	
+	
+	public static ConjuntoTDA hojas(ABBTDA a) {
+		
+		ConjuntoTDA hojas = new ConjuntoDinamico();
+		hojas.inicializarConjunto();
+		
+		if(!a.arbolVacio()) {
+			
+			if(a.hijoIzq().arbolVacio() && a.hijoDer().arbolVacio()) {
+				hojas.agregar(a.raiz());
+				return hojas; // vacio en esta instancia
+			}
+			
+			ConjuntoTDA izq = hojas(a.hijoIzq());
+			ConjuntoTDA der = hojas(a.hijoDer());
+			
+			
+			while(!izq.conjuntoVacio()) {
+				int e = izq.elegir();
+				izq.quitar(e);
+				hojas.agregar(e);
+			}
+			
+			while(!der.conjuntoVacio()) {
+				int e = der.elegir();
+				der.quitar(e);
+				hojas.agregar(e);
+			}
+		}
+		
+	
+		return hojas;
+	}
+	
+	/**
+	 * (40 p) Árboles: estrategia, código y costos. Usando las operaciones básicas
+			de árboles, implemente la operación eliminarHojas, la cual consiste en
+			eliminar todos aquellos nodos que son hojas en un árbol.
+			Se pide concretamente:
+			a) Explique la estrategia que utilizará para resolver este problema. Es
+			decir, la secuencia de pasos que lo llevarán a la solución.
+			b) Escriba un método en Java que realice su estrategia.
+			c) Calcule el costo de su método en términos de la cantidad de nodos
+			del árbol.
+	 */
+	public static ABBTDA eliminarHojas(ABBTDA a) {
+		
+		ConjuntoTDA hojas = hojas(a);
+		while(!hojas.conjuntoVacio()) {
+			int h = hojas.elegir();
+			hojas.quitar(h);
+			a.eliminarElem(h);
+		}
+		
+		return a;
+	
+	}
 }

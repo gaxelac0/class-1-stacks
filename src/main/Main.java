@@ -1,28 +1,29 @@
 package main;
 
-import main.exercises.EjercicioPilas;
-import main.impl.pila.PilaDinamica;
-import main.interfaces.PilaTDA;
+import main.exercises.EjercicioArboles;
+import main.impl.arbol.ABB;
+import main.interfaces.ABBTDA;
+import main.utils.ArbolUtils;
 
 public class Main {
 
 	public static void main(String[] args) {
 				
-		PilaTDA p1 = new PilaDinamica();
-		p1.apilar(1);
-		p1.apilar(2);
-		p1.apilar(3);
-		p1.apilar(4);
+		ABBTDA a = new ABB();
+		a.agregarElem(46);
+		a.agregarElem(25);
+		a.agregarElem(73);
+		a.agregarElem(36);
+		a.agregarElem(90);
+		a.agregarElem(62);
+		a.agregarElem(12);
+		a.agregarElem(30);
+		a.agregarElem(70);
+		a.agregarElem(54);
 		
 		
-		PilaTDA p2 = new PilaDinamica();
-		p2.apilar(1);
-		p2.apilar(2);
-		p2.apilar(3);
-		p2.apilar(4);
-		p2.apilar(5);
-
+		ABBTDA nw = EjercicioArboles.eliminarHojas(a);
 		
-		System.out.println(EjercicioPilas.sonIguales(p1, p2));
+		ArbolUtils.inOrder(nw);
 	}
 }
