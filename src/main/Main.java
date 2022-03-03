@@ -1,29 +1,31 @@
 package main;
 
-import main.exercises.EjercicioArboles;
-import main.impl.arbol.ABB;
-import main.interfaces.ABBTDA;
-import main.utils.ArbolUtils;
+import main.utils.ListaDinamicaUtils;
+import main.utils.Nodo;
 
 public class Main {
 
 	public static void main(String[] args) {
 				
-		ABBTDA a = new ABB();
-		a.agregarElem(46);
-		a.agregarElem(25);
-		a.agregarElem(73);
-		a.agregarElem(36);
-		a.agregarElem(90);
-		a.agregarElem(62);
-		a.agregarElem(12);
-		a.agregarElem(30);
-		a.agregarElem(70);
-		a.agregarElem(54);
+		Nodo n1 = new Nodo();
+		n1.valor = 3;
+		
+		n1 = ListaDinamicaUtils.agregarAdelante(n1, 2);
+		n1 = ListaDinamicaUtils.agregarAdelante(n1, 1);
+		
+		Nodo n2 = new Nodo();
+		n2.valor = 9;
+		
+		n2 = ListaDinamicaUtils.agregarAdelante(n2, 8);
+		n2 = ListaDinamicaUtils.agregarAdelante(n2, 7);
+		
+		ListaDinamicaUtils.mostrarLista(n1);
+		ListaDinamicaUtils.mostrarLista(n2);
+		
+		Nodo concat = ListaDinamicaUtils.concatenarRecursiva(n1, n2);
+		
+		ListaDinamicaUtils.mostrarLista(concat);
 		
 		
-		ABBTDA nw = EjercicioArboles.eliminarHojas(a);
-		
-		ArbolUtils.inOrder(nw);
 	}
 }
