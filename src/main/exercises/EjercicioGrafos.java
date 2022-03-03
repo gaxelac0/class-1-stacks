@@ -1,8 +1,10 @@
 package main.exercises;
 
 import main.impl.conjunto.ConjuntoDinamico;
+import main.impl.diccionario.*;
 import main.impl.grafo.GrafoDinamico;
 import main.interfaces.ConjuntoTDA;
+import main.interfaces.DiccionarioSimpleTDA;
 import main.interfaces.GrafoTDA;
 import main.utils.ConjuntoUtils;
 import main.utils.GrafoUtils;
@@ -194,6 +196,11 @@ public class EjercicioGrafos {
 		ConjuntoUtils.mostrarConjunto((ConjuntoDinamico)finales);
 	}
 
+	/**
+	 * Recupera los vertices que son finales, son aquellos que tienen aristas entrantes pero no salientes.
+	 * @param g
+	 * @return
+	 */
 	public static ConjuntoTDA finales(GrafoTDA g) {
 		
 		ConjuntoTDA finales = g.vertices();
@@ -219,6 +226,11 @@ public class EjercicioGrafos {
 		return finales;
 	}
 
+	/**
+	 * Obtiene los vertices iniciales. Son aquellos que tienen aristas salientes pero no entrantes.
+	 * @param g
+	 * @return
+	 */
 	public static ConjuntoTDA iniciales(GrafoTDA g) {
 		
 		ConjuntoTDA iniciales = g.vertices();
@@ -242,5 +254,56 @@ public class EjercicioGrafos {
 		}
 		
 		return iniciales;
+	}
+	
+	
+	
+	/**
+	 * 3. (40p) Grafos y TDAs. Código y estrategia. Se tiene un grafo G. Se desea
+	colocar parte de la información del grafo en un diccionario simple según
+	la siguiente especificación:
+	- Las claves del diccionario son los nodos del grafo.
+	- El valor de cada clave es la suma de los pesos de sus aristas salientes. Si un nodo no 
+	  tiene nodos aristas salientes, el valor correspondiente
+	es 0.
+	 */
+	public static DiccionarioSimpleTDA convertirDictSimple(GrafoTDA g) {
+		
+		DiccionarioSimpleTDA d = new DiccionarioSimpleDinamico();
+		
+		ConjuntoTDA vertices = g.vertices();
+		while(!vertices.conjuntoVacio()) {
+			
+			int v = vertices.elegir();
+			vertices.quitar(v);
+			
+			int peso_aristas_salientes_v = pesoAristasSalientes(g, v);
+			d.agregar(v, peso_aristas_salientes_v);
+		}
+		
+		return d;
+	}
+
+	/**
+	 * obtiene la sumatoria de pesos de todas las aristas salientes de v.
+	 * @param g grafo
+	 * @param v vertice v
+	 * @return suma de pesos de aristas salientes
+	 */
+	private static int pesoAristasSalientes(GrafoTDA g, int v) {
+		
+		int peso_salientes_v = 0;
+		
+		ConjuntoTDA vertices = g.vertices();
+		while(!vertices.conjuntoVacio()) {
+			
+			int dest = vertices.elegir();
+			vertices.quitar(dest);
+			
+			if(g.existeArista(v, dest)) {
+				peso_salientes_v += g.pesoArista(v, dest);
+			}
+		}
+		return peso_salientes_v;
 	}
 }
